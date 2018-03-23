@@ -6,10 +6,10 @@ In This Guide
 ===
 
 * [Dependencies](#dependencies)
-* [环境搭建](#environment)
-* [配置ansible服务器hosts](#ansible-server)
-* [配置ansible主机组](#host-and-hosts)
-* [节点服务器配置](#node-4)
+* [环境搭建](#server-environment)
+* [配置ansible服务器hosts](#ansiber-server-seting-hosts)
+* [配置ansible主机组](#set-ansible-hosts)
+* [节点服务器配置](#node-server-set)
 * [执行demo](#action-demo)
 * [结果检验](#check-result)
 
@@ -26,15 +26,15 @@ In This Guide
 
 ---
 
-<span id="environment">1.在服务器上搭建环境</span>
-=======================
+## Server Environment
+
 ```
 please RTFM and STFW.
 
 ```
 
-<span id="2ansible-server">2.配置节点服务器在`/etc/hosts`中</span>
-================
+## Ansiber server Seting hosts 
+
 ```
 $ sudo vi /etc/hosts
 
@@ -46,8 +46,9 @@ $ sudo vi /etc/hosts
 
 ```
 
-<span id="host-and-hosts">3.配置ansible主机组`/etc/ansible/hosts`</span>
-===============
+## Set Ansible hosts
+
+
 ```
 $ sudo vi /etc/ansible/hosts
 
@@ -73,9 +74,9 @@ NodeServer1 ansible_ssh_user=deploy
 
 >*希望哪位大神能指教,如何能让指定用户不使用sudo就可以执行`name:Ensure vhost config path extis` 感激不尽*
 
+## Node Server set
 
-<span id="node">4.在节点服务器上配置本服务器公钥,然后在ansible服务器上执行以下命令测试是否联通成功.</span>
-======
+>在节点服务器上配置本服务器公钥,然后在ansible服务器上执行以下命令测试是否联通成功
 ```
 ansible NodeServer -m ping
 
@@ -90,16 +91,18 @@ NodeServer1 | SUCCESS => {
 }
 ```
 
-<span id="action-demo">5.使用此代码 进入`deploy-ansible-service`目录执行以下命令</span>
-===
+## Action Demo
+
+>使用此代码 进入`deploy-ansible-service`目录执行以下命令
 
 >后面的变量 为`/etc/ansible/hosts`中配置的主机名或主机组名
 ```
 $shell/test/nginx-config.sh NodeServer
 
 ```
-<span id="check-result">6.出现以下提示 即为成功</span>
-======
+## Check Result
+
+> 出现以下提示 即为成功
 
 ```
  [WARNING]: Found variable using reserved name: action
