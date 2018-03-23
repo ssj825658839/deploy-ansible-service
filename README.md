@@ -5,7 +5,7 @@
 In This Guide
 ===
 
-* [Dependencies](#depend-0)
+* [Dependencies](#depend-A)
 * [1.环境搭建](#environment-1)
 * [2.配置ansible服务器hosts](#ansible-server-2)
 * [3.配置ansible主机组](#host-and-hosts-3)
@@ -15,7 +15,7 @@ In This Guide
 
 ---
 
-<span id="depend-0">Dependencies</span>
+<span id="depend-A">Dependencies</span>
 ===
 * ansible服务器
     * Ubuntu 16.04 LTS
