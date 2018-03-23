@@ -5,7 +5,7 @@
 In This Guide
 ===
 
-* [Dependencies](#depend)
+* [Dependencies](#Dependencies)
 * [环境搭建](#environment)
 * [配置ansible服务器hosts](#ansible-server)
 * [配置ansible主机组](#host-and-hosts)
