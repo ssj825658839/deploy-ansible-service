@@ -1,0 +1,48 @@
+- name: Ensure vhost config path extis
+  become: yes
+  file:
+    path: "{{vhost_conf_dir}}"
+    state: directory
+    follow: yes
+
+
+- name: check origin file exist
+  stat: path={{nginx_conf_dir}}/{{service_domain}}.conf
+  register: fileresult
+
+
+- name: Backups {{vhost_conf_dir}}/{{service_domain}}.conf
+  become: yes
+  command: cp -r {{nginx_conf_dir}}/{{service_domain}}.conf {{vhost_conf_dir}}/{{service_domain}}.conf.back
+  when: fileresult.stat.exists
+
+- name: Ensure cache  config path exists,create cache directory
+  become: yes
+  file:
+    path: "/etc/nginx/cache"
+    state: directory
+    follow: yes
+
+
+- name: Delete nginx default config file
+  become: yes
+  file:
+    path: "{{nginx_conf_dir}}/default"
+    state: absent
+
+- name: "Generate env {{env}} vhost config file"
+  become: yes
+  template:
+    src: "{{service_domain}}.j2"
+    dest: "{{nginx_conf_dir}}/{{service_domain}}.conf"
+  when: env == "test"
+
+- name: test nginx conf is correct
+  command: sudo nginx -t
+  register: result_nginxt
+
+- name: "nginx reload"
+  become: yes
+  command: sudo nginx -s reload
+  when: result_nginxt|success
+

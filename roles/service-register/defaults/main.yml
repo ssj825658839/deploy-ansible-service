@@ -1,0 +1,4 @@
+---
+  nginx_conf_dir: "/home/deploy/nginx/nginxconf/"
+  vhost_conf_dir: "/home/deploy/nginx/sites-available"
+  vhost_doc_dir: "/var/www"

@@ -1,0 +1,17 @@
+server{
+    listen 80 ;
+
+    server_name {{service_domain}};
+    root /var/www;
+
+    location /test {
+
+            alias /var/www/test-nginx-html;
+            try_files $uri $uri/ /index.html /index.htm;
+    }
+
+     location ~ ^/scene/content/list/(.*).php.(.*)$ {
+            try_files $uri $uri/ =404;
+     }
+
+}

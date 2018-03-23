@@ -1,0 +1,7 @@
+---
+- name: update nginx config
+  gather_facts: true
+  hosts: "{{host}}"
+  remote_user: deploy
+  roles:
+    - service-register

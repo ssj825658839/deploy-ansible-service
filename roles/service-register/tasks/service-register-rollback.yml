@@ -1,0 +1,15 @@
+- name: restore conf back
+  become: yes
+  command: cp -r {{vhost_conf_dir}}/{{service_domain}}.conf.back  {{nginx_conf_dir}}/{{service_domain}}.conf
+
+
+- name: test nginx conf is correct
+    command: sudo ngixn -t
+    register: result_nginxt
+
+- name: nginx reload
+  become: yes
+  service:
+    name: nginx
+    state: restarted
+  when: result_nginxt|success

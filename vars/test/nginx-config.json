@@ -1,0 +1,15 @@
+{
+  "action": "action",
+  "open_gzip":"true",
+  "elk":"10.0.1.124",
+  "env":"test",
+  "service_domain": "testnodeserver.feawin.com",
+  "projects":[{
+    "project_name": "toolkit-service",
+    "server_domain": "localhost",
+    "url_location": "toolkit",
+    "real_path": "",
+    "type": "restify",
+    "project_port": "7001"
+  }]
+}
