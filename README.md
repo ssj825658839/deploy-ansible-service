@@ -1,21 +1,21 @@
 # deploy-ansible-service-demo
-
+>注:小白初试
 
 
 In This Guide
 ===
 
-* [Dependencies](#0)
-* [1.环境搭建](#1)
-* [2.配置节点服务器中](#2)
-* [3.配置ansible主机组](#3)
-* [4.节点服务器配置](#4)
-* [5.执行demo](#5)
-* [6.结果检验](#6)
+* [Dependencies](#depend-0)
+* [1.环境搭建](#environment-1)
+* [2.配置ansible服务器hosts](#ansible-server-2)
+* [3.配置ansible主机组](#host-and-hosts-3)
+* [4.节点服务器配置](#node-4)
+* [5.执行demo](#action-demo-5)
+* [6.结果检验](#check-result-6)
 
 ---
 
-<span id="0">Dependencies</span>
+<span id="depend-0">Dependencies</span>
 ===
 * ansible服务器
     * Ubuntu 16.04 LTS
@@ -26,14 +26,14 @@ In This Guide
 
 ---
 
-<span id="1">1.在服务器上搭建环境</span>
+<span id="environment-1">1.在服务器上搭建环境</span>
 =======================
 ```
 please RTFM and STFW.
 
 ```
 
-<span id="2">2.配置节点服务器在`/etc/hosts`中</span>
+<span id="2ansible-server-2">2.配置节点服务器在`/etc/hosts`中</span>
 ================
 ```
 $ sudo vi /etc/hosts
@@ -46,7 +46,7 @@ $ sudo vi /etc/hosts
 
 ```
 
-<span id="3">3.配置ansible主机组`/etc/ansible/hosts`</span>
+<span id="host-and-hosts-3">3.配置ansible主机组`/etc/ansible/hosts`</span>
 ===============
 ```
 $ sudo vi /etc/ansible/hosts
@@ -74,7 +74,7 @@ NodeServer1 ansible_ssh_user=deploy
 >*希望哪位大神能指教,如何能让指定用户不使用sudo就可以执行`name:Ensure vhost config path extis` 感激不尽*
 
 
-<span id="4">4.在节点服务器上配置本服务器公钥,然后执行以下命令测试是否联通成功.</span>
+<span id="node-4">4.在节点服务器上配置本服务器公钥,然后在ansible服务器上执行以下命令测试是否联通成功.</span>
 ======
 ```
 ansible NodeServer -m ping
@@ -90,7 +90,7 @@ NodeServer1 | SUCCESS => {
 }
 ```
 
-<span id="5">5.使用此代码 进入`deploy-ansible-service`目录执行以下命令</span>
+<span id="action-demo-5">5.使用此代码 进入`deploy-ansible-service`目录执行以下命令</span>
 ===
 
 >后面的变量 为`/etc/ansible/hosts`中配置的主机名或主机组名
@@ -98,7 +98,7 @@ NodeServer1 | SUCCESS => {
 $shell/test/nginx-config.sh NodeServer
 
 ```
-<span id="6">6.出现以下提示 即为成功</span>
+<span id="check-result-6">6.出现以下提示 即为成功</span>
 ======
 
 ```
